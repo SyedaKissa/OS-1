@@ -25,7 +25,7 @@ int main()
 
 		if (flag == 0)
 		{
-			// print the exact same word
+			// print the exa
 
 		}
 		else if (flag == 1)
