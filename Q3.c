@@ -11,8 +11,7 @@ int main()
 	char buffer[50];
 	char reverse[50];
 
-    //Cleaning the Buffers
-        
+    //Cleaning the Buffers        
     memset(buffer,'\0',sizeof(buffer));
     memset(reverse,'\0',sizeof(reverse));
 
@@ -45,10 +44,18 @@ int main()
             i = 0;
 			for (j=length-1; j>=0; j--)
 			{
-				
+				reverse[j] = buffer[i];
+				i++;
 			}
+			reverse[length] = '\0';
+			fputs(reverse, output);		
 		}
 
+		//Cleaning the Buffers        
+        memset(buffer,'\0',sizeof(buffer));
+        memset(reverse,'\0',sizeof(reverse));
+
+        fscanf(input,"%s",buffer);
 	}
 
 	fclose(input);
