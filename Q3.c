@@ -16,7 +16,8 @@ int main()
 	{
 		for (i=0; i<50; i++)
 		{
-			if ( buffer[i] == "a") // aeiou 
+			if ( buffer[i] == "a" || buffer[i] == "e" || buffer[i] == "i" || buffer[i] == "o" || buffer[i] == "u" || 
+			     buffer[i] == "A" || buffer[i] == "E" || buffer[i] == "I" || buffer[i] == "O" || buffer[i] == "U")
 			{
 				flag = 1;
 				break;
@@ -25,7 +26,8 @@ int main()
 
 		if (flag == 0)
 		{
-			// print the exa
+			// print the exact the same
+
 
 		}
 		else if (flag == 1)
