@@ -1,5 +1,6 @@
 /* reverse words that do not have vowels */
 #include <stdio.h>
+#include <string.h>
 
 int main()
 {
@@ -8,8 +9,15 @@ int main()
 	output = fopen("b.txt", "w");
 
 	char buffer[50];
+	char reverse[50];
+
+    //Cleaning the Buffers
+        
+    memset(buffer,'\0',sizeof(buffer));
+    memset(reverse,'\0',sizeof(reverse));
+
 	fscanf(input,"%s",buffer);
-	int i,flag;
+	int i,j,length,flag;
 	flag = 0; // means no vowel
 
 	while( feof(input) )
@@ -27,13 +35,18 @@ int main()
 		if (flag == 0)
 		{
 			// print the exact the same
-
-
+			fputs(buffer, output);
 		}
 		else if (flag == 1)
 		{
 			flag = 0;
 			// print in reverse
+			length = strlen(buffer); // strlen() function doesn't count the null character \0 while calculating the length
+            i = 0;
+			for (j=length-1; j>=0; j--)
+			{
+				
+			}
 		}
 
 	}
