@@ -7,8 +7,12 @@ int main()
 	output = fopen("b.txt", "a+");
 
 	int option = 0;
-	int record = -1;
-	int find_record = -1;
+	int record = -1; // keeping track of the total records of students
+	int find_record = -1; // the record number students types in option 2
+	int check_record = -1;
+
+	int i,j;
+	char number[10]; // stores the record number while traversing the file
 
 	char Name[50];
 	char Rollnumber[9];
@@ -48,7 +52,7 @@ while (option != 4)
 
 		record++;
 
-		fprintf(output, "Record: %d Name: %s  Roll No: %s Email: %s \n", record, Name, Rollnumber, email);
+		fprintf(output, "Record: %d Name: %s Roll No: %s Email: %s\n", record, Name, Rollnumber, email);
 		//fprintf(output, "Name: %s R ", Name);
 		fclose(output); // necessary to close file after ever option in it 
 	}
@@ -62,8 +66,20 @@ while (option != 4)
 		if (find_record < 0 || find_record > record) { printf("%s\n", "This record is not available" );	}
 		else
 		{
-			fgets(buffer, 100, output);
+			fgets(buffer, 200, output);
 			printf("BUFFER : %s\n", buffer);
+
+			i = 0
+			for ( j = 9; buffer[j] != 'N'; j++)
+			{
+				number[i] = buffer[j];
+				i++;
+			}
+			number[i] = '\0';
+			printf("%s\n", number);
+			check_record = atoi(number);
+			printf("%d\n", check_record);
+			
 		}
 	}
 	else if (option == 3)
