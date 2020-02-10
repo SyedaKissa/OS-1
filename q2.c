@@ -14,7 +14,10 @@ int main()
 	char Rollnumber[9];
 	char email[50];
 
-	//Cleaning the Buffers        
+	char buffer[50];
+
+	//Cleaning the Buffers
+	memset(buffer,'\0',sizeof(buffer));        
     memset(Name,'\0',sizeof(Name));
     memset(Rollnumber,'\0',sizeof(Rollnumber));
     memset(email,'\0',sizeof(email));
@@ -59,7 +62,8 @@ while (option != 4)
 		if (find_record < 0 || find_record > record) { printf("%s\n", "This record is not available" );	}
 		else
 		{
-
+			fgets(buffer, 100, output);
+			printf("BUFFER : %s\n", buffer);
 		}
 	}
 	else if (option == 3)
@@ -72,7 +76,8 @@ while (option != 4)
 	}
 
 	option = 0;
-	//Cleaning the Buffers        
+	//Cleaning the Buffers 
+	memset(buffer,'\0',sizeof(buffer));       
     memset(Name,'\0',sizeof(Name));
     memset(Rollnumber,'\0',sizeof(Rollnumber));
     memset(email,'\0',sizeof(email));	
