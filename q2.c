@@ -8,6 +8,7 @@ int main()
 
 	int option = 0;
 	int record = -1;
+	int find_record = -1;
 
 	char Name[50];
 	char Rollnumber[9];
@@ -44,13 +45,22 @@ while (option != 4)
 
 		record++;
 
-		fprintf(output, "Name: %s  Roll No: %s Email: %s \n", Name, Rollnumber, email);
+		fprintf(output, "Record: %d Name: %s  Roll No: %s Email: %s \n", record, Name, Rollnumber, email);
 		//fprintf(output, "Name: %s R ", Name);
 		fclose(output); // necessary to close file after ever option in it 
 	}
 	else if (option == 2)
 	{
+		printf("%d\n", "Please type in the record number");
+		scanf("%d",find_record); // & is added with scanf
 
+		//fgets - read till it gets to end of line
+
+		if (find_record < 0 || find_record > record) { printf("%s\n", "This record is not available" );	}
+		else
+		{
+
+		}
 	}
 	else if (option == 3)
 	{
