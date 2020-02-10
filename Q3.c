@@ -4,7 +4,7 @@
 
 int main()
 {
-	FIlE *input, *output;
+	FIlE *input,*output;
 	input  = fopen("a.txt", "r");
 	output = fopen("b.txt", "w");
 
@@ -15,16 +15,16 @@ int main()
     memset(buffer,'\0',sizeof(buffer));
     memset(reverse,'\0',sizeof(reverse));
 
-	fscanf(input,"%s",buffer);
+	//fscanf(input,"%s",buffer);
 	int i,j,length,flag;
 	flag = 0; // means no vowel
 
-	while( feof(input) )
+	while( fscanf(input,"%s",buffer) != EOF )
 	{
 		for (i=0; i<50; i++)
 		{
-			if ( buffer[i] == "a" || buffer[i] == "e" || buffer[i] == "i" || buffer[i] == "o" || buffer[i] == "u" || 
-			     buffer[i] == "A" || buffer[i] == "E" || buffer[i] == "I" || buffer[i] == "O" || buffer[i] == "U")
+			if ( buffer[i] == 'a' || buffer[i] == 'e' || buffer[i] == 'i' || buffer[i] == 'o' || buffer[i] == 'u' || 
+			     buffer[i] == 'A' || buffer[i] == 'E' || buffer[i] == 'I' || buffer[i] == 'O' || buffer[i] == 'U')
 			{
 				flag = 1;
 				break;
@@ -35,7 +35,7 @@ int main()
 		{
 			// print the exact the same
 			fputs(buffer, output);
-		}
+		}//oooo
 		else if (flag == 1)
 		{
 			flag = 0;
@@ -55,7 +55,7 @@ int main()
         memset(buffer,'\0',sizeof(buffer));
         memset(reverse,'\0',sizeof(reverse));
 
-        fscanf(input,"%s",buffer);
+        //fscanf(input,"%s",buffer);
 	}
 
 	fclose(input);
