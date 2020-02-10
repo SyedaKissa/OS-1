@@ -35,7 +35,7 @@ int main()
 		{
 			// print the exact the same
 			fputs(buffer, output);
-		}//oooo
+		}
 		else if (flag == 1)
 		{
 			flag = 0;
