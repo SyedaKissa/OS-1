@@ -107,14 +107,24 @@ while (1)
 			{   
 			    if (counter < find_record || counter > find_record)	
 			    {
-			    	if (fgets(buffer,100,output) != EOF )
+			    	if ( (fgets(&buffer,100,output)) != EOF )
 			    	{
 			    		strcat(buffer2, buffer);
 			    	    counter++;
 			    	    printf("Buffer 2%s\n", buffer2);
+			    	}
+			    	else
+			    	{
+			    		break;
 			    	}			    	
-			    }			    
-			}
+			    }
+
+			}//while
+			fclose(output);
+
+			output = fopen("b.txt", "w");
+			fprintf(output,buffer2);
+
 		}
 		
 		find_record = -1;
