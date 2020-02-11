@@ -1,4 +1,4 @@
-// Write a program to read a file and count the number of digits in it.The file may contain an alphanumeric string.
+// Write a program to read a file and count the number of digits in it. The file may contain an alphanumeric string
 #include <stdio.h>
 #include <string.h>
 
