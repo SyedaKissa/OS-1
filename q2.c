@@ -102,9 +102,20 @@ while (1)
 		if (find_record <0 || find_record > total_record) { printf("%s\n", "This record is not available" ); }
 		else
 		{
-						
+			counter = 1;
+			while(1)
+			{   
+			    if (counter < find_record || counter > find_record)	
+			    {
+			    	if (fgets(buffer,100,output) != EOF )
+			    	{
+			    		strcat(buffer2, buffer);
+			    	    counter++;
+			    	    printf("Buffer 2%s\n", buffer2);
+			    	}			    	
+			    }			    
+			}
 		}
-
 		
 		find_record = -1;
 		fclose(output);
@@ -115,7 +126,8 @@ while (1)
 	}
 
 	option = 0;
-		//Cleaning the Buffers	
+
+    //Cleaning the Buffers	
 	memset(buffer,'\0',sizeof(buffer));       
     memset(Name,'\0',sizeof(Name));
     memset(Rollnumber,'\0',sizeof(Rollnumber));
