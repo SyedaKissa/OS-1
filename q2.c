@@ -128,6 +128,7 @@ while (1)
 		find_record = -1;
 		fclose(output);
 	}
+}
 	else 
 	{
 		printf("%s\n", "Please type in the correct option");
