@@ -2,11 +2,26 @@
 #include <stdio.h>
 #include <string.h>
 
-int main()
+int main(int argc, char* arg[])
 {
 	FILE *input,*output;
-	input  = fopen("a.txt", "r");
-	output = fopen("b.txt", "w");
+
+	if( *arg[1] == 'a')
+	{
+		input = fopen ("q3_a.txt","r");
+	}
+	else if( *arg[1] == 'b')
+	{
+		input = fopen ("q3_b.txt","r");
+	}
+	else
+	{
+		printf("Incorrect arguement \n");
+		exit(0);
+	}
+
+	//input  = fopen("a.txt", "r");
+	output = fopen("output.txt", "w");
 
 	char buffer[25];
 	char reverse[25];
