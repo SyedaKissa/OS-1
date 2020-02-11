@@ -9,11 +9,15 @@ int main(int argc, char* arg[] )
 
 	if( *arg[1] == 'a')
 	{
-		input = fopen ("q3_a.txt","r");
+		input = fopen ("q1_a.txt","r");
 	}
 	else if( *arg[1] == 'b')
 	{
-		input = fopen ("q3_b.txt","r");
+		input = fopen ("q1_b.txt","r");
+	}
+	else if( *arg[1] == 'c')
+	{
+		input = fopen ("q1_c.txt","r");
 	}
 	else
 	{
