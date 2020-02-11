@@ -123,9 +123,7 @@ while (1)
 			fclose(output);
 
 			output = fopen("b.txt", "w");
-			fprintf(output,buffer2);
-
-		}
+			fprintf(output,buffer2);		
 		
 		find_record = -1;
 		fclose(output);
