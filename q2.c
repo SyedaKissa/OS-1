@@ -74,18 +74,14 @@ while (1)
 
 			fgets(buffer, 100, output); //fgets - read till it gets to end of line			
 			
-			for ( j = 0; buffer[j] != ' '; j++)
-			{
-				number[j] = buffer[j];				
-			}
+			for ( j = 0; buffer[j] != ' '; j++) { number[j] = buffer[j]; }
+
 			number[j+1] = '\0';			
 			check_record = atoi(number);
 
-			if (check_record == find_record) 
-			{
-				printf("Student Record details: %s\n", buffer);
-				break;
-			}
+			if (check_record == find_record) {
+				printf("Student Record details: %s\n", buffer); 
+				break;	}
 		    }		    		
 		}
 		check_record = -1;
@@ -94,6 +90,31 @@ while (1)
 	}
 	else if (option == 3)
 	{
+		output = fopen("b.txt", "a+");
+		printf("%s\n", "Please type in the record number to delete");
+		scanf("%d",&find_record); // & is added with scanf
+
+		if (find_record <0 || find_record > total_record) { printf("%s\n", "This record is not available" ); }
+		else
+		{
+			while(1)
+			{
+				fgets(buffer, 100, output); //fgets - read till it gets to end of line
+
+				for ( j = 0; buffer[j] != ' '; j++) { number[j] = buffer[j]; }
+
+			    number[j+1] = '\0';			
+			    check_record = atoi(number);	
+
+			    if (check_record == find_record) {			    	
+				printf("The Student Record deleted is: %s\n", buffer); 
+				
+				break;	}
+			}
+		}
+
+		check_record = -1;
+		find_record = -1;
 		fclose(output);
 	}
 	else 
@@ -102,7 +123,7 @@ while (1)
 	}
 
 	option = 0;
-	//Cleaning the Buffers 
+		//Cleaning the Buffers 
 	memset(number,'\0',sizeof(number));
 	memset(buffer,'\0',sizeof(buffer));       
     memset(Name,'\0',sizeof(Name));
