@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 int main()
@@ -7,7 +8,7 @@ int main()
 	output = fopen("b.txt", "a+");
 
 	int option = 0;
-	int record = -1; // keeping track of the total records of students
+	int total_record = -1; // keeping track of the total records of students
 	int find_record = -1; // the record number students types in option 2
 	int check_record = -1;
 
@@ -21,13 +22,16 @@ int main()
 	char buffer[50];
 
 	//Cleaning the Buffers
+	memset(number,'\0',sizeof(number)); 
 	memset(buffer,'\0',sizeof(buffer));        
     memset(Name,'\0',sizeof(Name));
     memset(Rollnumber,'\0',sizeof(Rollnumber));
     memset(email,'\0',sizeof(email));
 
-while (option != 4) 
-{
+while (1) 
+{    
+    output = fopen("b.txt", "a+");
+
 	printf("%s\n", "1) Add a new student" );
 	printf("%s\n", "2) Read student record ");
 	printf("%s\n", "3) Delete student record");
@@ -46,45 +50,51 @@ while (option != 4)
 		printf("%s\n", "Please type in Email of the student");
 		scanf("%s",email); // & is added with scanf
 
-		printf("Name : %s\n", Name);
-		printf("Roll number : %s\n", Rollnumber);
-		printf("Email : %s\n", email);
+		//printf("Name : %s\n", Name);
+		//printf("Roll number : %s\n", Rollnumber);
+		//printf("Email : %s\n", email);
+		
+		total_record = total_record + 1;
 
-		record++;
-
-		fprintf(output, "Record: %d Name: %s Roll No: %s Email: %s\n", record, Name, Rollnumber, email);
+		fprintf(output, "%d Name: %s Roll No: %s Email: %s\n", total_record, Name, Rollnumber, email);
 		//fprintf(output, "Name: %s R ", Name);
 		fclose(output); // necessary to close file after ever option in it 
 	}
 	else if (option == 2)
 	{
-		printf("%d\n", "Please type in the record number");
-		scanf("%d",find_record); // & is added with scanf
+		output = fopen("b.txt", "a+");
 
-		//fgets - read till it gets to end of line
+		printf("%s\n", "Please type in the record number");
+		scanf("%d",&find_record); // & is added with scanf		
 
-		if (find_record < 0 || find_record > record) { printf("%s\n", "This record is not available" );	}
+		if (find_record<0 || find_record > total_record) { printf("%s\n", "This record is not available" );	}
 		else
 		{
-			fgets(buffer, 200, output);
-			printf("BUFFER : %s\n", buffer);
+			while (1) {
 
-			i = 0
-			for ( j = 9; buffer[j] != 'N'; j++)
-			{
-				number[i] = buffer[j];
-				i++;
-			}
-			number[i] = '\0';
-			printf("%s\n", number);
-			check_record = atoi(number);
-			printf("%d\n", check_record);
+			fgets(buffer, 100, output); //fgets - read till it gets to end of line			
 			
+			for ( j = 0; buffer[j] != ' '; j++)
+			{
+				number[j] = buffer[j];				
+			}
+			number[j+1] = '\0';			
+			check_record = atoi(number);
+
+			if (check_record == find_record) 
+			{
+				printf("Student Record details: %s\n", buffer);
+				break;
+			}
+		    }		    		
 		}
+		check_record = -1;
+		find_record = -1;
+		fclose(output);
 	}
 	else if (option == 3)
 	{
-
+		fclose(output);
 	}
 	else 
 	{
@@ -93,6 +103,7 @@ while (option != 4)
 
 	option = 0;
 	//Cleaning the Buffers 
+	memset(number,'\0',sizeof(number));
 	memset(buffer,'\0',sizeof(buffer));       
     memset(Name,'\0',sizeof(Name));
     memset(Rollnumber,'\0',sizeof(Rollnumber));
