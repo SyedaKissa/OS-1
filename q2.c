@@ -11,27 +11,27 @@ int main()
 	int total_record = -1; // keeping track of the total records of students
 	int find_record = -1; // the record number students types in option 2
 	
-	int j, counter;
+	int j,counter;
 	
 	char Name[50];
 	char Rollnumber[9];
 	char email[50];
 
 	char buffer[50];
+	char buffer2[50];
 	char c;
 
 	//Cleaning the Buffers
 	
-	memset(buffer,'\0',sizeof(buffer));        
+	memset(buffer,'\0',sizeof(buffer)); 
+	memset(buffer2,'\0',sizeof(buffer2));       
     memset(Name,'\0',sizeof(Name));
     memset(Rollnumber,'\0',sizeof(Rollnumber));
     memset(email,'\0',sizeof(email));
 
 while (1) 
 {    
-    output = fopen("b.txt", "a+");
-
-	printf("%s\n", "1) Add a new student" );
+    printf("%s\n", "1) Add a new student" );
 	printf("%s\n", "2) Read student record ");
 	printf("%s\n", "3) Delete student record");
 	printf("%s\n", "4) Exit");
@@ -46,6 +46,8 @@ while (1)
 	}
 	else if (option == 1)
 	{
+		output = fopen("b.txt", "a+");
+
 		printf("%s\n", "Please type in Name of the student");
 		scanf("%s",Name); // & is added with scanf
 		printf("%s\n", "Please type in Roll Number of the student");
@@ -86,20 +88,21 @@ while (1)
 				}								
 			}
 		}
-		//check_record = -1;
+		
 		find_record = -1;
 		fclose(output);
 	}
 	else if (option == 3)
 	{
 		output = fopen("b.txt", "a+");
+
 		printf("%s\n", "Please type in the record number to delete");
 		scanf("%d",&find_record); // & is added with scanf
 
 		if (find_record <0 || find_record > total_record) { printf("%s\n", "This record is not available" ); }
 		else
 		{
-			
+						
 		}
 
 		
